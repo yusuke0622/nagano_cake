@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   
  
+  namespace :admin do
+    resources :items
+  end
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about', as: 'about'
   
