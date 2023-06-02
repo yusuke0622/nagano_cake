@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  
- 
-  namespace :admin do
-    resources :items
-  end
+
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about', as: 'about'
   
@@ -16,6 +12,10 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  
+   namespace :admin do
+    resources :items
+  end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
