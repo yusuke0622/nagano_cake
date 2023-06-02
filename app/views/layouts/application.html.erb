@@ -7,37 +7,41 @@
     <%= csp_meta_tag %>
    
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <div>
-        <h1>LOGO</h1>
-      </div>
-      <% if customer_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-        </li>
-      <% elsif admin_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "About", about_path %>
-        </li>
-        <li> 
-          <%= link_to "商品一覧", admin_items_path %>
-        </li>
-        <li>
-          <%= link_to "新規登録", new_customer_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_customer_session_path %>
-        </li>
-      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="navbar-brand">
+          <h1>LOGO</h1>
+        </div>
+        <ul class="navbar-nav">
+          <% if customer_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item"> 
+              <%= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
     </header>
     <%= yield %>
   </body>
