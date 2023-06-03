@@ -20,10 +20,11 @@ Rails.application.routes.draw do
   end
   
    scope module: :public do
-    resources :customers, only: [:edit, :quit, :update,]
+    resources :customers, only: [:quit, :withdraw]
   end
    get 'customers/my_page' => 'public/customers#show', as: 'my_page'
-  
+   get 'customers/information/edit' => 'public/customers#edit'
+   patch 'customers/information' => 'public/customers#update'
  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
