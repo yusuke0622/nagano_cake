@@ -15,11 +15,12 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   
+  #管理者　商品
    namespace :admin do
     resources :items
   end
   
-   #顧客
+   #顧情報
    get 'customers/my_page' => 'public/customers#show', as: 'my_page'
    get 'customers/information/edit' => 'public/customers#edit'
    patch 'customers/information' => 'public/customers#update'

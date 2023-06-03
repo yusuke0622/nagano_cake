@@ -1,8 +1,15 @@
 class Admin::ItemsController < ApplicationController
-  def index
+  def new
+    @item = Item.new
   end
 
-  def new
+  def create
+    @item = Item.new(item_params)
+    @item.save
+    redirect_to about_path
+  end
+  
+  def index
   end
 
   def show
@@ -10,4 +17,11 @@ class Admin::ItemsController < ApplicationController
 
   def edit
   end
+  
+  private 
+  def item_params
+    params.require(:item).permit(:name, :image, :introduction, :price)
+  end
+  
 end
+
