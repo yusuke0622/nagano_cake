@@ -1,2 +1,20 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div>
+    <h2><%= (@customer.first_name+@customer.last_name) %>さんの会員詳細</h2>
+</div>
+<div>
+    <p><strong>会員ID</strong></p>
+    <%= @customer.id %>
+    <p><strong>氏名</strong></p>
+    <%= (@customer.first_name+@customer.last_name) %>
+    <p><strong>フリガナ</strong></p>
+    <%= (@customer.first_name_kana+@customer.last_name_kana) %>
+    <p><strong>郵便場号</strong></p>
+    <%= @customer.postal_code %>
+    <p><strong>住所</strong></p>
+    <%= @customer.address %>
+    <p><strong>電話番号</strong></p>
+    <%= @customer.telephone_number %>
+    <p><strong>メールアドレス</strong></p>
+    <%= @customer.email %>
+    <%= link_to '編集する', edit_admin_customer_path, class: 'btn btn-success' %>
+</div>
