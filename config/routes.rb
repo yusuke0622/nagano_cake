@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
  
  
+  namespace :admin do
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
+  end
   namespace :public do
     get 'items/index'
     get 'items/show'
@@ -37,5 +42,10 @@ Rails.application.routes.draw do
   #顧客　商品
    scope module: :public do
     resources :items, only: [:index, :show]
+   end
+   
+  #管理者　顧客管理
+   namespace :admin do
+    resources :customers, only: [:index, :show, :edit, :update]
    end
 end
