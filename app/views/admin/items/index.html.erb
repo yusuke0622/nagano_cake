@@ -10,18 +10,19 @@
             </tr>
         </thead>
         <tbody>
+          <% @items.each do |item| %>
             <tr>
-                <% @items.each do |item| %>
-                    <td><%= item.id %></td>
-                    <td>
-                        <%= link_to admin_item_path(item.id) do %>
-                        <%= item.name %>
-                        <% end %>
-                    </td>
-                    <td><%= item.price %></td>
-                <% end %>
+                <td><%= item.id %></td>
+                <td>
+                    <%= link_to admin_item_path(item.id) do %>
+                    <%= item.name %>
+                    <% end %>
+                </td>
+                <td><%= item.price.to_s(:delimited) %></td>
             </tr>
+          <% end %>
         </tbody>
+     
     </table>
 
 <%= paginate @items %>

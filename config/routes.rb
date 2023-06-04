@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
  
  
+  namespace :public do
+    get 'items/index'
+    get 'items/show'
+  end
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about', as: 'about'
   
@@ -15,16 +19,23 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   
-  #管理者　商品
-   namespace :admin do
-    resources :items
-  end
+ 
   
-   #顧情報
+   #顧客情報
    get 'customers/my_page' => 'public/customers#show', as: 'my_page'
    get 'customers/information/edit' => 'public/customers#edit'
    patch 'customers/information' => 'public/customers#update'
    get 'customers/quit' => 'public/customers#quit'
    patch 'customers/withdraw' => 'public/customers#withdraw'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  #管理者　商品
+   namespace :admin do
+    resources :items
+  end
+  
+  #顧客　商品
+   scope module: :public do
+    resources :items, only: [:index, :show]
+   end
 end
