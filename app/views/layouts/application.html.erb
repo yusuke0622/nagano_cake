@@ -13,40 +13,58 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="navbar-brand">
-          <h1>LOGO</h1>
-        </div>
-        <ul class="navbar-nav">
-          <% if customer_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "マイページ", my_page_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
-            </li>
-          <% elsif admin_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "商品一覧", admin_items_path, class: "nav-link text-dark" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "About", about_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item"> 
-              <%= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
-            </li>
-          <% end %>
-        </ul>
+        <nav class="navbar navbar-expand-lg navbar-light">
+         <div class="container">
+            <div class="navbar-brand">
+              <h1>NaganoCake</h1>
+            </div>
+        
+            <ul class="navbar-nav ml-auto">
+              <% if customer_signed_in? %>
+                <li class="customer-name style">
+                  ようこそ、<%= current_customer.first_name %>さん！
+                </li>
+                <li class="nav-item btn btn-outline-secondary ml-4">
+                  <%= link_to "マイページ", my_page_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary ml-4 ">
+                  <%= link_to "商品一覧", items_path, class: 'nav_link text-dark' %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary ml-4 ">
+                  <%= link_to "カート", about_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary ml-4 ">
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-item btn btn-outline-secondary ml-4 ">
+                  <%= link_to "商品一覧", admin_items_path, class: "nav-link text-dark btn-s" %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary ml-4  ">
+                  <%= link_to "会員一覧", admin_customers_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary ml-4 ">
+                  <%= link_to "注文履歴一覧", about_path, class: "nav-link text-dark" %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary ml-4 ">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+                </li>
+              <% else %>
+                <li class="nav-item btn btn-outline-secondary ml-4 ">
+                  <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary ml-4 "> 
+                  <%= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary ml-4 ">
+                  <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary ml-4 ">
+                  <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
+                </li>
+              <% end %>
+            </ul>
+        </div><!--container--->
       </nav>
     </header>
     <%= yield %>
