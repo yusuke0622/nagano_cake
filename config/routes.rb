@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
  
  
+  namespace :public do
+    get 'cart_items/index'
+  end
   namespace :admin do
     get 'customers/index'
     get 'customers/show'
@@ -48,4 +51,11 @@ Rails.application.routes.draw do
    namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
    end
+   
+   #顧客　カート内商品
+  scope module: :public do
+   resources :cart_items, only: [:index,:update, :destroy, :create]
+  end
+  delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all', as: 'destroy_all'
+  
 end
