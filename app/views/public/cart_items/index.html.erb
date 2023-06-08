@@ -15,7 +15,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <% @sum = 0 %>
                  <% @cart_items.each do |cart_item| %>
                     <tr>
                         <td><%= cart_item.item.name %></td>
@@ -26,14 +25,13 @@
                                 <%= f.select :amount, *[1..10] %><%= f.submit '変更', class: 'btn btn-success' %>
                             <% end %>
                         </td>
-                        <td><%= cart_item.subtotal %></td>
+                        <td><%= cart_item.subtotal.to_s(:delimited) %></td>
                         <td></td>
                     </tr>
-                    <% @sum += cart_item.subtotal %>
                  <% end %>
                      <tr>
                          <th>合計金額</th>
-                         <td><%= @sum %></td>
+                         <td><%= @total_price.to_s(:delimited) %></td>
                      </tr>
                 </tbody>
             </table>
