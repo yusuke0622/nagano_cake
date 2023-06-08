@@ -1,9 +1,13 @@
-<div>
-    <div>
-        <div>
+<div class="container">
+    <div class="row">
             <h2>ショッピングカート</h2>
-               
             
+            <div class="text-right">
+                <%= link_to cart_items_destroy_all_path, method: :delete do %>
+                    <button class="btn btn-danger">カートを空にする</button>
+                <% end %>
+            </div><!--カート空にする--->
+             
             <table class="table">
                 <thead>
                     <tr>
@@ -26,17 +30,46 @@
                             <% end %>
                         </td>
                         <td><%= cart_item.subtotal.to_s(:delimited) %></td>
-                        <td></td>
+                        <td>
+                            <%= link_to cart_item_path(cart_item), method: :delete do %>
+                                <button class="btn btn-danger">削除</button>
+                            <% end %>
+                        </td>
                     </tr>
                  <% end %>
-                     <tr>
-                         <th>合計金額</th>
-                         <td><%= @total_price.to_s(:delimited) %></td>
-                     </tr>
                 </tbody>
             </table>
+                    
+          <div class="row">
             
+            <div class="col-xs-4">
+                <%= link_to items_path do %>
+                    <button class="btn btn-primary">買い物を続ける</button>
+                <% end %>
+            </div><!--買い物を続ける--->
             
-        </div>
+            <div class="col-xs-4"></div>
+            
+            <div class="col-xs-4">
+                <table class="table">
+                    <tr>
+                     <th>合計金額</th>
+                     <td><%= @total_price.to_s(:delimited) %></td>
+                    </tr>
+                </table>
+            </div><!---合計金額--->
+            
+            <div class="text-center">
+                <% if current_customer.cart_items.any? %>
+                
+                    <%= link_to about_path do %>
+                        <button class="btn btn-success">情報入力に進む</button>
+                    <% end %>
+                    
+                <% end %>
+            </div><!---情報入力------>
+        
+         </div><!----row---->
+         
     </div>
 </div>

@@ -53,9 +53,11 @@ Rails.application.routes.draw do
    end
    
    #顧客　カート内商品
+   delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
+  
   scope module: :public do
    resources :cart_items, only: [:index,:update, :destroy, :create]
   end
-  delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all', as: 'destroy_all'
+  delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
   
 end
