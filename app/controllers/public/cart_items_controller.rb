@@ -1,7 +1,7 @@
 class Public::CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items
-    @sum = 0
+    @total_price = @cart_items.sum{|cart_item|cart_item.item.add_tax_price * cart_item.amount}
   end
   
   def create 
