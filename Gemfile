@@ -62,3 +62,7 @@ gem 'kaminari', '~> 1.2.1'
 gem 'image_processing', '~> 1.2'
 
 gem 'pry-rails'
+
+gem 'enum_help'
+
+gem 'rails-i18n'
