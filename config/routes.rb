@@ -3,6 +3,11 @@ Rails.application.routes.draw do
  
  
   namespace :public do
+    get 'orders/new'
+    get 'orders/index'
+    get 'orders/show'
+  end
+  namespace :public do
     get 'cart_items/index'
   end
   namespace :admin do
@@ -60,4 +65,10 @@ Rails.application.routes.draw do
   end
   delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
   
+  #顧客　注文
+  scope module: :public do
+   resources :orders, only: [:new, :create, :index, :show]
+  end
+   post 'orders/confirm' => 'public/orders#confirm'
+   get 'orders/thanx' => 'public/orders#thanx'
 end
