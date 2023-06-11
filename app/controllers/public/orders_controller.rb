@@ -13,6 +13,29 @@ class Public::OrdersController < ApplicationController
     @total_price = @cart_items.sum{|cart_item|cart_item.item.add_tax_price * cart_item.amount}
     @order.postage = 800
   end
+  
+  def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    if @order.save!
+      @cart_items = current_customer.cart_items
+      @cart_items.each do |cart_item|
+        order_detail = OrderDetail.new
+        order_detail.item_id = cart_item.item.id
+        order_detail.order_id = @order.id
+        order_detail.amount = cart_item.amount
+        order_detail.price = cart_item.item.price
+      end
+      redirect_to orders_thanx_path
+      @cart_items.destroy_all
+    else
+      render :new
+    end
+  end
+  
+  def thanx
+  end
+  
 
   def index
   end
@@ -22,7 +45,7 @@ class Public::OrdersController < ApplicationController
   
   private
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :destination, :address_name)
+    params.require(:order).permit(:payment_method, :postal_code, :destination, :address_name, :postage, :amount_billed)
   end
   
 end
