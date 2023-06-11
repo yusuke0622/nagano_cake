@@ -13,7 +13,7 @@
     <tbody>
         <% @orders.each do |order| %>
         <tr>
-            <td><%= order.created_at.to_s(:datetime_jp) %></td>
+            <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
             <td>
                 <%= order.postal_code %><br>
                 <%= order.destination %><br>
