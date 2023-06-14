@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
- 
- 
+
  #顧客　トップページ
   root to: 'public/homes#top'
  #顧客　Aboutページ
   get 'about' => 'public/homes#about', as: 'about'
   
-  #管理者　トップページ
+ #管理者　トップページ　注文履歴一覧
   get 'admin' => 'admin/homes#top'
   
   
@@ -25,9 +24,12 @@ Rails.application.routes.draw do
  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-  #管理者　商品
+  #管理者　注文詳細　商品　顧客管理
+   
    namespace :admin do
     resources :items
+    resources :customers
+    resources :orders, only: [:show]
   end
 
 
