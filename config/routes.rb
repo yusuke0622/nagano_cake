@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
  
+ 
+ #顧客　トップページ
   root to: 'public/homes#top'
+ #顧客　Aboutページ
   get 'about' => 'public/homes#about', as: 'about'
+  
+  #管理者　トップページ
+  get 'admin' => 'admin/homes#top'
   
   
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
