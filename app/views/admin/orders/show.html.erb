@@ -7,7 +7,7 @@
         <div>
             <p>
                 <strong>購入者</strong>
-                <%= link_to admin_customer_path do %>
+                <%= link_to admin_customer_path(@order.customer_id) do %>
                 <%= (@order.customer.first_name + @order.customer.last_name) %>
                 <% end %>
             </p>

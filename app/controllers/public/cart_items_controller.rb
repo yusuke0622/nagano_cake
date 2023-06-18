@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
+  
   def index
     @cart_items = current_customer.cart_items
     @total_price = @cart_items.sum{|cart_item|cart_item.item.add_tax_price * cart_item.amount}
@@ -11,8 +13,10 @@ class Public::CartItemsController < ApplicationController
       cart_item.amount += params[:cart_item][:amount].to_i
       cart_item.save
       redirect_to cart_items_path
-    elsif @cart_item.save!
+    elsif @cart_item.save
       redirect_to cart_items_path
+    else
+      render "public/items/show"
     end
   end
   
@@ -38,6 +42,6 @@ class Public::CartItemsController < ApplicationController
   
   private
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount)
+    params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
 end
