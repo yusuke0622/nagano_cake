@@ -1,6 +1,16 @@
 <div>
     <div>
         <h2>注文情報入力</h2>
+        
+        <% if @order.errors.any? %>
+            <%= @order.errors.count %>件のエラーが発生しました。
+            <ul>
+                <%= @order.errors.full_messages.each do |message| %>
+                    <%= message %>
+                <% end %>
+            </ul>
+        <% end %>
+        
         <div>
             <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
                 <div>

@@ -5,19 +5,40 @@
 </div>
 
 <div>
-    <p><strong>会員ID</strong></p>
-    <%= @customer.id %>
-    <p><strong>氏名</strong></p>
-    <%= (@customer.first_name+@customer.last_name) %>
-    <p><strong>フリガナ</strong></p>
-    <%= (@customer.first_name_kana+@customer.last_name_kana) %>
-    <p><strong>郵便場号</strong></p>
-    <%= @customer.postal_code %>
-    <p><strong>住所</strong></p>
-    <%= @customer.address %>
-    <p><strong>電話番号</strong></p>
-    <%= @customer.telephone_number %>
-    <p><strong>メールアドレス</strong></p>
-    <%= @customer.email %>
+    <p>
+        <strong>会員ID</strong>
+        <%= @customer.id %>
+    </p>
+    <p>
+        <strong>氏名</strong>
+        <%= (@customer.first_name+@customer.last_name) %>
+    </p>
+   
+    <p>
+        <strong>フリガナ</strong>
+        <%= (@customer.first_name_kana+@customer.last_name_kana) %>
+    </p>
+    
+    <p>
+        <strong>郵便場号</strong>
+        <%= @customer.postal_code %>
+    </p>
+    
+    <p>
+        <strong>住所</strong>
+        <%= @customer.address %>
+    </p>
+   
+    <p>
+        <strong>電話番号</strong>
+        <%= @customer.telephone_number %>
+    </p>
+    
+    <p>
+        <strong>メールアドレス</strong>
+        <%= @customer.email %>
+    </p>
+    
     <%= link_to '編集する', edit_admin_customer_path, class: 'btn btn-success' %>
+    
 </div>
