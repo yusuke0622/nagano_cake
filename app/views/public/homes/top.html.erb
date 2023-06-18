@@ -1,30 +1,39 @@
 <%= flash[:notice] %>
 
-<div>
-    <div>
-        <div>
-            <p>ようこそ、ながのCAKEへ！<br>
+<div class="container">
+    <div class="row justify-content-md-center my-5">
+        <div class="center-block my-4 py-5 px-4 border border-dark">
+            <p class="text-start"><strong>ようこそ、ながのCAKEへ！<br>
                 このサイトは、ケーキ販売のECサイトになります。<br>
                 会員でない方も商品の閲覧はできますが、<br>
-                購入には会員登録が必要になります。</p>
+                購入には会員登録が必要になります。</strong>
+            </p>
         </div>
-        
-    <div>
-        <h1>新着商品</h1>
     </div>
-    <div>
-        <% @items.each do |item| %>
+    
+    <div class="row my-2">
+        <div class="col-2">
+            <h2><strong>新着商品</strong></h2>
+        </div>
+    </div>
+    
+    <div class="row">
+       <% @items.each do |item| %>
+         <div class="col-3">
             <%= link_to item_path(item.id) do %>
-            <%= image_tag item.get_image(150, 100) %>
+            <%= image_tag item.get_image(150, 100) %><br>
             <% end %>
-            <%= item.name %>
+            <%= item.name %><br>
             ¥<%= item.price %>
+        </div>
         <% end %>
     </div>
-    <div>
-        <%= link_to items_path do %>
-         <p>全ての商品を見る></p>
-        <% end %>
-    </div>
+    
+    <div class="row justify-content-end">
+        <div class="col-2">
+            <%= link_to items_path do %>
+             <p>全ての商品を見る></p>
+            <% end %>
+       </div>
     </div>
 </div>
