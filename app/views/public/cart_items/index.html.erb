@@ -9,13 +9,13 @@
             </div><br><!--カート空にする--->
 </div>
             <table class="table table-bordered mt-3">
-                <thead class="table-dark">
+                <thead>
                     <tr>
-                        <th>商品名</th>
-                        <th>単価(税込)</th>
-                        <th style="width: 15%">数量</th>
-                        <th>小計</th>
-                        <th></th>
+                        <th class="bg-secondary text-light">商品名</th>
+                        <th class="bg-secondary text-light">単価(税込)</th>
+                        <th class="bg-secondary text-light" style="width: 15%">数量</th>
+                        <th class="bg-secondary text-light">小計</th>
+                        <th class="bg-secondary text-light"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +53,7 @@
             <div class="col-md-4 offset-md-4">
                 <table class="table table-bordered">
                     <tr>
-                     <th class="bg-dark text-light">合計金額</th>
+                     <th class="bg-secondary text-light">合計金額</th>
                      <td><%= @total_price.to_s(:delimited) %></td>
                     </tr>
                 </table>

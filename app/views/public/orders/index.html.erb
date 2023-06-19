@@ -1,34 +1,39 @@
-<h2>注文履歴一覧</h2>
-
-<table>
-    <thead>
-        <tr>
-            <th>注文日</th>
-            <th>配送先</th>
-            <th>注文商品</th>
-            <th>支払金額</th>
-            <th>注文詳細</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @orders.each do |order| %>
-        <tr>
-            <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-            <td>
-                <%= order.postal_code %><br>
-                <%= order.destination %><br>
-                <%= order.address_name %>
-            </td>
-            <% order.order_details.each do |order_detail| %>
-                <td><%= order_detail.item.name %></td>
+<div class="container">
+    <h2><strong>注文履歴一覧</strong></h2>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-secondary text-light">注文日</th>
+                <th class="bg-secondary text-light">配送先</th>
+                <th class="bg-secondary text-light">注文商品</th>
+                <th class="bg-secondary text-light">支払金額</th>
+                <th class="bg-secondary text-light">注文詳細</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @orders.each do |order| %>
+            <tr>
+                <td class="align-middle"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+                <td class="align-middle">
+                    <%= order.postal_code %><br>
+                    <%= order.destination %><br>
+                    <%= order.address_name %>
+                </td>
+                <td class="align-middle">
+                    <% order.order_details.each do |order_detail| %>
+                        <%= order_detail.item.name %><br>
+                    <% end %>
+                </td>
+                <td class="align-middle"><%= order.amount_billed.to_s(:delimited) %></td>
+                <td class="align-middle">
+                    <%= link_to order_path(order.id) do %>
+                    <button class="btn btn-primary">表示する</button>
+                    <% end %>
+                </td>
+            </tr>
             <% end %>
-            <td><%= order.amount_billed.to_s(:delimited) %></td>
-            <td>
-                <%= link_to order_path(order.id) do %>
-                <button class="btn btn-primary">表示する</button>
-                <% end %>
-            </td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+    <%= paginate @orders %>
+</div>
