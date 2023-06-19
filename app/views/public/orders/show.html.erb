@@ -1,79 +1,72 @@
-<div>
-    <div>
-        <div>
-            <h2>注文履歴詳細</h2>
+<div class="container">
+        <div class="row mt-5">
+            <h2 class="col-md-4"><strong>注文履歴詳細</strong></h2>
         </div>
         
-        <div>
-            <h3>注文情報</h3>
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th>注文日</th>
-                        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-                    </tr>
-                    <tr>
-                        <th>配送先</th>
-                        <td><%= @order.destination %></td>
-                    </tr>
-                    <tr>
-                        <th>支払方法</th>
-                        <td><%= @order.payment_method_i18n %></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div>
-            <div>
-                <h3>請求情報</h3>
-            </div>
-            <div>
-                <table class="table">
+        <div class="row mt-5">
+            <div class="col-md-7">
+                <h3><strong>注文情報</strong></h3>
+                <table class="table table-bordered border-dark">
                     <tbody>
                         <tr>
-                            <th>商品合計</th>
-                            <td><%= (@order.amount_billed - @order.postage).to_s(:delimited) %></td>
+                            <th class="bg-secondary text-light">注文日</th>
+                            <td class="align-middle"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
                         </tr>
                         <tr>
-                            <th>配送料</th>
-                            <td><%= @order.postage %></td>
+                            <th class="bg-secondary text-light">配送先</th>
+                            <td class="align-middle"><%= @order.destination %></td>
                         </tr>
                         <tr>
-                            <th>ご請求額</th>
-                            <td><%= @order.amount_billed.to_s(:delimited) %></td>
+                            <th class="bg-secondary text-light">支払方法</th>
+                            <td class="align-middle"><%= @order.payment_method_i18n %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h3><strong>請求情報</strong></h3>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th class="bg-secondary text-light">商品合計</th>
+                            <td class="align-middle"><%= (@order.amount_billed - @order.postage).to_s(:delimited) %></td>
+                        </tr>
+                        <tr>
+                            <th class="bg-secondary text-light">配送料</th>
+                            <td class="align-middle"><%= @order.postage %></td>
+                        </tr>
+                        <tr>
+                            <th class="bg-secondary text-light">ご請求額</th>
+                            <td class="align-middle"><%= @order.amount_billed.to_s(:delimited) %></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         
-        <div>
-            <div>
-                <h3>注文内容</h3>
-            </div>
-            <div>
-                <table class="table">
+        <div class="row mt-2">
+            <div class="col-md-8">
+                <h3><strong>注文内容</strong></h3>
+                <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>商品</th>
-                            <th>単価(税込)</th>
-                            <th>個数</th>
-                            <th>小計</th>
+                            <th class="bg-secondary text-light">商品</th>
+                            <th class="bg-secondary text-light">単価(税込)</th>
+                            <th class="bg-secondary text-light">個数</th>
+                            <th class="bg-secondary text-light">小計</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% @order_details.each do |order_detail| %>
                         <tr>
-                            <td><%= order_detail.item.name %></td>
-                            <td><%= order_detail.price %></td>
-                            <td><%= order_detail.amount %></td>
-                            <td><%= (order_detail.item.price * order_detail.amount) %></td>
+                            <td class="align-middle"><%= order_detail.item.name %></td>
+                            <td class="align-middle"><%= order_detail.price %></td>
+                            <td class="align-middle"><%= order_detail.amount %></td>
+                            <td class="align-middle"><%= (order_detail.item.price * order_detail.amount) %></td>
                         </tr>
                         <% end %>
                     </tbody>
                 </table>
-            </div>
+           </div>
         </div>
-    </div>
 </div>

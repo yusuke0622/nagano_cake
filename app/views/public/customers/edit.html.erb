@@ -1,44 +1,48 @@
-<h2>会員情報編集</h2>
+<div class="container mt-4">
 
-<% if @customer.errors.any? %>
-    <%= @customer.errors.count %>件のエラーが発生しました
-    <ul>
-        <%= @customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-    </ul>
-<% end %>
+    <h2><strong>会員情報編集</strong></h2>
+    
+    <% if @customer.errors.any? %>
+        <%= @customer.errors.count %>件のエラーが発生しました
+        <ul>
+            <%= @customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+    
+    
+    <%= form_with(model: @customer, url: customers_information_path, method: :PATCH) do |f| %>
+        <div class="row form-group mt-4">
+            <%= f.label :name, '氏名', class: 'col-md-2' %>
+            <%= f.text_field :first_name, class: 'col-md-2' %>
+            <%= f.text_field :last_name, class: 'col-md-2 ml-4' %>
+        </div>
+        <div class="row form-group">
+            <%= f.label :kana, 'フリガナ', class: 'col-md-2' %>
+            <%= f.text_field :first_name_kana, class: 'col-md-2' %>
+            <%= f.text_field :last_name_kana, class: 'col-md-2 ml-4' %>
+        </div>
+        <div class="row form-group">
+            <%= f.label :postal_code, '郵便番号', class: 'col-md-2' %>
+            <%= f.text_field :postal_code, class: 'col-md-2' %>
+        </div>
+        <div class="row form-group">
+            <%= f.label :address, '住所', class: 'col-md-2' %>
+            <%= f.text_field :address, class: 'col-md-6' %>
+        </div>
+        <div class="row form-group">
+            <%= f.label :telephone_number, '電話番号', class: 'col-md-2' %>
+            <%= f.text_field :telephone_number, class: 'col-md-2' %>
+        </div>
+        <div class="row form-group">
+            <%= f.label :email, 'メールアドレス', class: 'col-md-2' %>
+            <%= f.text_field :email, class: 'col-md-3' %>
+        </div>
+        <div class="row form-group">
+            <%= f.submit "編集内容を保存", class: "btn btn-success offset-md-2 col-md-3" %>
+            <%= link_to "退会する", customers_quit_path, class: "btn btn-danger offset-md-1 col-md-2" %>
+        </div>
+    <% end %>
 
-
-<%= form_with(model: @customer, url: customers_information_path, method: :PATCH) do |f| %>
-    <div class="field">
-        <%= f.label :name, '氏名' %>
-        <%= f.text_field :first_name %>
-        <%= f.text_field :last_name %>
-    </div>
-    <div class="field">
-        <%= f.label :kana, 'フリガナ' %>
-        <%= f.text_field :first_name_kana %>
-        <%= f.text_field :last_name_kana %>
-    </div>
-    <div class="field">
-        <%= f.label :postal_code, '郵便番号' %>
-        <%= f.text_field :postal_code %>
-    </div>
-    <div class="field">
-        <%= f.label :address, '住所' %>
-        <%= f.text_field :address %>
-    </div>
-    <div class="field">
-        <%= f.label :telephone_number %>
-        <%= f.text_field :telephone_number %>
-    </div>
-    <div class="field">
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-    </div>
-    <div>
-        <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-        <%= link_to "退会する", customers_quit_path, class: "btn btn-danger" %>
-<% end %>
-
+</div>
