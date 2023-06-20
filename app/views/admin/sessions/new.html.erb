@@ -6,12 +6,12 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="row form-group">
           <%= f.label :email, 'メールアドレス', class: 'col-md-3 col-sm-6' %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'sample@gmail.com', class: 'col-md-8 col-sm-4' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'sample@gmail.com', class: 'col-md-7 col-sm-4' %>
         </div>
       
         <div class="row form-group">
           <%= f.label :password, 'パスワード', class: 'col-md-3 col-sm-6' %><br />
-          <%= f.password_field :password, autocomplete: "current-password", class: 'col-md-8 col-sm-4' %>
+          <%= f.password_field :password, autocomplete: "current-password", class: 'col-md-7 col-sm-4' %>
         </div>
       
         <div class="row form-group">

@@ -1,32 +1,35 @@
-<div>
-    <div>
-        <div>
-            <h2>注文履歴一覧</h2>
-        </div>
+<div class="container">
+    <div class="row">
+         <h2 class="col-md-10 offset-md-1"><strong>注文履歴一覧</strong></h2>
+    </div>
         
-        <div>
+    <div class="row mt-4">
+        <div class="mx-auto col-md-10">
             <table class="table">
-                <thead>
-                    <tr>
-                        <th>購入日時</th>
-                        <th>購入者</th>
-                        <th>注文個数</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @orders.each do |order| %>
-                    <tr>
-                        <td>
-                            <%= link_to admin_order_path(order.id) do %>
-                             <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-                            <% end %>
-                        </td>
-                        <td><%= (order.customer.first_name + order.customer.last_name) %></td>
-                        <td><%= order.order_details.sum(:amount) %></td>
-                    </tr>
-                    <% end %>
-                </tbody>
+                    <thead>
+                        <tr>
+                            <th class="bg-secondary text-light" style="width: 35%">購入日時</th>
+                            <th class="bg-secondary text-light">購入者</th>
+                            <th class="bg-secondary text-light">注文個数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @orders.each do |order| %>
+                        <tr>
+                            <td class="text-dark">
+                                <%= link_to admin_order_path(order.id), class: "text-dark border-bottom border-dark" do %>
+                                 <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                                <% end %>
+                            </td>
+                            <td><%= (order.customer.first_name + order.customer.last_name) %></td>
+                            <td><%= order.order_details.sum(:amount) %></td>
+                        </tr>
+                        <% end %>
+                    </tbody>
             </table>
         </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+    <%= paginate @orders%>
     </div>
 </div>

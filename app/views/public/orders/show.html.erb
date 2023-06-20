@@ -60,9 +60,9 @@
                         <% @order_details.each do |order_detail| %>
                         <tr>
                             <td class="align-middle"><%= order_detail.item.name %></td>
-                            <td class="align-middle"><%= order_detail.price %></td>
+                            <td class="align-middle"><%= (order_detail.price * 1.1).floor.to_s(:delimited) %></td>
                             <td class="align-middle"><%= order_detail.amount %></td>
-                            <td class="align-middle"><%= (order_detail.item.price * order_detail.amount) %></td>
+                            <td class="align-middle"><%= (order_detail.item.price * order_detail.amount * 1.1).floor.to_s(:delimited) %></td>
                         </tr>
                         <% end %>
                     </tbody>

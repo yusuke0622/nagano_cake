@@ -6,19 +6,19 @@
         </h2>
     
     
-    <div class="d-flex flex-wrap flex-row">
-        <% @items.each do |item| %>
-        <div class="flex-item my-3 pr-4">
-            <%= link_to item_path(item.id) do %>
-                <%= image_tag item.get_image(220, 140) %><br>
+        <div class="d-flex flex-wrap flex-row">
+            <% @items.each do |item| %>
+            <div class="flex-item my-3 pr-4">
+                <%= link_to item_path(item.id) do %>
+                    <%= image_tag item.get_image(220, 140) %><br>
+                <% end %>
+                <%= item.name %><br>
+                ¥<%= item.price.to_s(:delimited) %>
+            </div>
             <% end %>
-            <%= item.name %><br>
-            ¥<%= item.price.to_s(:delimited) %>
         </div>
-        <% end %>
-    </div>
-    
-    <%= paginate @items %>
-        </div>
+        
+        <%= paginate @items %>
+            </div>
     </div>
 </div>
