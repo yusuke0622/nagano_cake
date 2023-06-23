@@ -1,11 +1,32 @@
-<div><%= flash[:success] %></div>
-
-<h2>商品詳細</h2>
-
-<div>
-    <%= image_tag @item.get_image(220,160) %>
-    <p>商品名<%= @item.name %></p>
-    <p>商品説明<%= @item.introduction %></p>
-    <p>税込価格(税抜価格)<%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</p>
+<div class="container">
+    <div><%= flash[:success] %></div>
+    <div class="row mt-4">
+        <h2 class="offset-md-1">商品詳細</h2>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-md-3">
+            <%= image_tag @item.get_image(240,200) %>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="row">
+                <p class="col-md-3">商品名</p>
+                <span class="col-md-6"><%= @item.name %></span>
+            </div>
+             <div class="row">
+                <p class="col-md-3">商品説明</p>
+                <span class="col-md-6"><%= @item.introduction %></span>
+            </div>
+             <div class="row mt-2">
+                <p class="col-md-3">税込価格<br>(税抜価格)</p>
+                <span class="col-md-6"><%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</span>
+            </div>
+            <div class="row">
+                 <%= link_to '編集する', edit_admin_item_path, class: 'btn btn-success btn-lg col-md-3 offset-md-2 mt-3' %>
+            </div>
+        </div>
+    </div>
+       
+    
 </div>
-    <%= link_to '編集する', edit_admin_item_path, class: 'btn btn-success' %>

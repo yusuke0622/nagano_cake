@@ -1,21 +1,31 @@
-<h2>商品編集</h2>
-
-<%= form_with model: @item, url: admin_item_path(@item.id), method: :PATCH do |f| %>
-   <div class="field">
-    <%= f.label :image, '商品画像' %>
-    <%= f.file_field :image, accept: "image/*" %>
+<div class="container">
+ <div class="row">
+  <div class="col-md-10">
+    <div class="row mt-4">
+     <h2 class="offset-md-1">商品編集</h2>
+    </div>
+   
+    <%= form_with model: @item, url: admin_item_path(@item.id), method: :PATCH do |f| %>
+       <div class="row form-group mt-4">
+        <%= f.label :image, '商品画像', class: "col-md-2 offset-md-2" %>
+        <%= f.file_field :image, accept: "image/*", class: "col-md-4" %>
+       </div>
+       <div class="row form-group">
+        <%= f.label :name, '商品名', class: "col-md-2 offset-md-2" %>
+        <%= f.text_field :name, class: "col-md-4" %>
+       </div>
+       <div class="row form-group">
+        <%= f.label :introduction, '商品説明', class: "col-md-2 offset-md-2" %>
+        <%= f.text_area :introduction, size: "10x5", class: "col-md-4" %>
+       </div>
+       <div class="row form-group">
+        <%= f.label :price, '税抜価格', class: "col-md-2 offset-md-2" %>
+        <%= f.text_field :price, class: "col-md-4" %>円
+       </div>
+       <div class="row form-group mt-4">
+         <%= f.submit '変更を保存', class: 'btn btn-success offset-md-5' %>
+        </div>
+    <% end %>
    </div>
-   <div class="field">
-    <%= f.label :name, '商品名' %>
-    <%= f.text_field :name %>
-   </div>
-   <div class="field">
-    <%= f.label :introduction, '商品説明' %>
-    <%= f.text_field :introduction %>
-   </div>
-   <div class="field">
-    <%= f.label :price, '税抜価格' %>
-    <%= f.text_field :price %>円
-   </div>
-    <%= f.submit '変更を保存', class: 'btn btn-success' %>
-<% end %>
+ </div>
+</div>
