@@ -1,28 +1,42 @@
-<h2>商品一覧</h2>
-
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>商品ID</th>
-                <th>商品名</th>
-                <th>税抜価格</th>
-            </tr>
-        </thead>
-        <tbody>
-          <% @items.each do |item| %>
-            <tr>
-                <td><%= item.id %></td>
-                <td>
-                    <%= link_to admin_item_path(item.id) do %>
-                    <%= item.name %>
-                    <% end %>
-                </td>
-                <td><%= item.price.to_s(:delimited) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-     
-    </table>
-
-<%= paginate @items %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 mx-auto">
+            <div class="row my-4">
+                <h2 class="col-md-9 offset-md-1">商品一覧</h2>
+                <div class="col-md-1">
+                <%= link_to new_admin_item_path do %>
+                    <button class="btn btn-outline-dark">＋</button>
+                <% end %>
+                </div>
+            </div>
+            
+            
+            <table class="table">
+                <thead class="bg-secondary text-light">
+                    <tr>
+                        <th>商品ID</th>
+                        <th>商品名</th>
+                        <th>税抜価格</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <% @items.each do |item| %>
+                    <tr>
+                        <td><%= item.id %></td>
+                        <td>
+                            <%= link_to admin_item_path(item.id) do %>
+                            <%= item.name %>
+                            <% end %>
+                        </td>
+                        <td><%= item.price.to_s(:delimited) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+                 
+                </table>
+            <div class="text-center">
+                <%= paginate @items %>
+            </div>
+        </div>
+    </div>
+</div>

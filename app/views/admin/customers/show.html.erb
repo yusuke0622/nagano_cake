@@ -1,44 +1,44 @@
-<%= flash[:success] %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-11">
+            <%= flash[:success] %>
 
-<div>
-    <h2><%= (@customer.first_name+@customer.last_name) %>さんの会員詳細</h2>
-</div>
+            <div class="row">
+                <h2 class="col-md-5"><%= (@customer.first_name+@customer.last_name) %>さんの会員詳細</h2>
+            </div>
 
-<div>
-    <p>
-        <strong>会員ID</strong>
-        <%= @customer.id %>
-    </p>
-    <p>
-        <strong>氏名</strong>
-        <%= (@customer.first_name+@customer.last_name) %>
-    </p>
-   
-    <p>
-        <strong>フリガナ</strong>
-        <%= (@customer.first_name_kana+@customer.last_name_kana) %>
-    </p>
-    
-    <p>
-        <strong>郵便場号</strong>
-        <%= @customer.postal_code %>
-    </p>
-    
-    <p>
-        <strong>住所</strong>
-        <%= @customer.address %>
-    </p>
-   
-    <p>
-        <strong>電話番号</strong>
-        <%= @customer.telephone_number %>
-    </p>
-    
-    <p>
-        <strong>メールアドレス</strong>
-        <%= @customer.email %>
-    </p>
-    
-    <%= link_to '編集する', edit_admin_customer_path, class: 'btn btn-success' %>
-    
+            <div class="row mt-4">
+                <p class="col-md-2">会員ID</p>
+                <span class="col-md-6"><%= @customer.id %></span>
+            </div>
+            <div class="row">
+                <p class="col-md-2">氏名</p>
+                <span class="col-md-6"><%= (@customer.first_name+@customer.last_name) %></span>
+            </div>
+            <div class="row">
+                <p class="col-md-2">フリガナ</p>
+                <span class="col-md-6"><%= (@customer.first_name_kana+@customer.last_name_kana) %></span>
+            </div>
+                
+            <div class="row">
+                <p class="col-md-2">郵便場号</p>
+                <span class="col-md-6"><%= @customer.postal_code %></span>
+            </div>
+            <div class="row">
+                <p class="col-md-2">住所</p>
+                <span class="col-md-6"><%= @customer.address %></span>
+            </div>
+            <div class="row">
+                <p class="col-md-2">電話番号</p>
+                <span class="col-md-6"><%= @customer.telephone_number %></span>
+            </div>
+            <div class="row">
+                <p class="col-md-2">メールアドレス</p>
+                <span class="col-md-6"><%= @customer.email %></span>
+            </div>
+            <div class="row">
+                <%= link_to '編集する', edit_admin_customer_path, class: 'btn btn-success col-md-2 offset-md-2 mt-2' %>
+            </div>
+        </div>
+    </div>
 </div>
