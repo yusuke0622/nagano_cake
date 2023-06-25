@@ -3,7 +3,11 @@
     <div class="col-md-9 col-sm-10 mx-5 mx-sm-auto mt-5">
       
        <h2 class="my-3"><strong>ログイン</strong></h2>
-    
+       
+       <div>
+       <%= flash[:notice] %>
+       </div>
+       
        <h3 class="col-md-8 mt-4 mb-3">会員の方はこちらからログイン</h3>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="row form-group offset-md-1">
