@@ -5,7 +5,7 @@
         <div class="row mb-4">
             <div class="col-md-8">
                 <table class="table table-bordered">
-                    <thead class="table-dark">
+                    <thead class="bg-secondary text-light">
                         <tr>
                             <th>商品名</th>
                             <th>単価(税込)</th>
@@ -39,16 +39,16 @@
                 <table class="table table-bordered ">
                     <tbody>
                         <tr>
-                            <th class="table-dark">送料</th>
+                            <th class="bg-secondary text-light">送料</th>
                             <td><%= @order.postage %></td>
                             <%= f.hidden_field :postage, :value => @order.postage %>
                         </tr>
                         <tr>
-                            <th class="table-dark">商品合計</th>
+                            <th class="bg-secondary text-light">商品合計</th>
                             <td><%= @total_price.to_s(:delimited) %></td>
                         </tr>
                         <tr>
-                            <th class="table-dark">請求金額</th>
+                            <th class="bg-secondary text-light">請求金額</th>
                             <td><%= (@order.postage + @total_price).to_s(:delimited) %></td>
                             <%= f.hidden_field :amount_billed, :value => (@total_price + @order.postage) %>
                         </tr>

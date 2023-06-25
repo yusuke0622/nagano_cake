@@ -1,58 +1,67 @@
 <div class="container">
-     <h2 class="mt-5 ml-3">注文情報入力</h2>
-        <% if @order.errors.any? %>
-            <%= @order.errors.count %>件のエラーが発生しました。
-            <ul>
-                <%= @order.errors.full_messages.each do |message| %>
-                    <%= message %>
+    <div class="row">
+        <div class="col-md-11">
+            <div class="row mt-4">
+             <h2 class="offset-md-1">注文情報入力</h2>
+            </div>
+                <% if @order.errors.any? %>
+                    <%= @order.errors.count %>件のエラーが発生しました。
+                    <ul>
+                        <%= @order.errors.full_messages.each do |message| %>
+                            <%= message %>
+                        <% end %>
+                    </ul>
                 <% end %>
-            </ul>
-        <% end %>
-        
-        <div>
-            <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
-                <div class="mt-4">
-                    <h3>支払方法</h3>
-                    <%= f.radio_button :payment_method, "credit_card" %>
-                    <%= f.label :payment_method_credit_card, "クレジットカード" %><br>
-                    <%= f.radio_button :payment_method, "transfer" %>
-                    <%= f.label :payment_method_transfer, "銀行振込" %>
-                </div>
-                <div class="mt-4">
-                    <h3>お届け先</h3>
-                    <%= f.radio_button :destination_number, 0 %>
-                    <%= f.label :destination, "ご自身の住所" %>
-                    <br>
-                    <div class="ml-4">
-                    〒<%= @customer.postal_code %>
-                    <%= @customer.address %><br>
-                    <%= (@customer.first_name + @customer.last_name) %>
-                    <br>
+                
+                <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
+                    <div class="mt-2">
+                        <h3>支払方法</h3>
+                        <div class="ml-md-4">
+                            <%= f.radio_button :payment_method, "credit_card" %>
+                            <%= f.label :payment_method_credit_card, "クレジットカード" %><br>
+                            <%= f.radio_button :payment_method, "transfer" %>
+                            <%= f.label :payment_method_transfer, "銀行振込" %>
+                        </div>
                     </div>
-                    
-                    <%= f.radio_button :destination_number, 1 %>
-                    <%= f.label :destination, "新しいお届け先" %>
-                    <br>
-                   
-                    <div class="row form-group">
-                    <%= f.label :postsal_code, "郵便番号(ハイフンなし)", class: "ml-3 col-md-3" %>
-                    <%= f.text_field :postal_code, placeholder: "0000000", class: "col-md-2" %>
-                    <br>
+                    <div class="mt-2">
+                        <h3>お届け先</h3>
+                        <div class="ml-md-4">
+                            <%= f.radio_button :destination_number, 0 %>
+                            <%= f.label :destination, "ご自身の住所" %>
+                            <br>
+                            <div class="ml-4">
+                            〒<%= @customer.postal_code %>
+                            <%= @customer.address %><br>
+                            <%= (@customer.first_name + @customer.last_name) %>
+                            <br>
+                            </div>
+                            <div class="mt-2">
+                            <%= f.radio_button :destination_number, 1 %>
+                            <%= f.label :destination, "新しいお届け先" %>
+                            <br>
+                            </div>
+                            <div class="row form-group">
+                            <%= f.label :postsal_code, "郵便番号(ハイフンなし)", class: "ml-3 col-md-3" %>
+                            <%= f.text_field :postal_code, placeholder: "0000000", class: "col-md-2" %>
+                            <br>
+                            </div>
+                            <div class="row form-group">
+                            <%= f.label :destination, "住所", class: "ml-3 col-md-3" %>
+                            <%= f.text_field :destination, placeholder: "東京都渋谷区代々木神園町0-0", class: "col-md-6" %>
+                            <br>
+                            </div>
+                            <div class="row form-group">
+                            <%= f.label :address_name, "宛名", class: "ml-3 col-md-3" %>
+                            <%= f.text_field :address_name, placeholder: "令和理子", class: "col-md-2" %>
+                            <br>
+                            </div>
+                         </div>
+                        <div class="row">
+                            <%= f.submit "確認画面へ進む", class: "btn btn-primary col-md-2 offset-md-4" %>
+                        </div>
                     </div>
-                    <div class="row form-group">
-                    <%= f.label :destination, "住所", class: "ml-3 col-md-3" %>
-                    <%= f.text_field :destination, placeholder: "東京都渋谷区代々木神園町0-0", class: "col-md-4" %>
-                    <br>
-                    </div>
-                    <div class="row form-group">
-                    <%= f.label :address_name, "宛名", class: "ml-3 col-md-3" %>
-                    <%= f.text_field :address_name, placeholder: "令和理子", class: "col-md-2" %>
-                    <br>
-                    </div>
-                    <div>
-                        <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
-                    </div>
-                </div>
-            <% end %>
+                <% end %>
+            </div>
         </div>
+    </div>
 </div>
