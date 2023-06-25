@@ -7,7 +7,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    @orders = current_customer.orders.all.page(params[:page]).per(6)
+    @orders = current_customer.orders.all.page(params[:page]).per(5).order('created_at DESC')
   end
   
   def confirm
