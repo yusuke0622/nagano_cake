@@ -1,24 +1,33 @@
-# README
+＃ながのcake
+　長野県にある小さな洋菓子店。
+　商品を通販するためのECサイト。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+＃About
+　・会員登録をしなくても商品の閲覧が可能。
+　・会員のみ商品の注文が可能。
+　・会員は退会しない限り、注文履歴を確認することが可能。
+　
+＃DEMO
 
-Things you may want to cover:
+＃Function
+　ログイン機能
+　カート機能
+　注文機能
 
-* Ruby version
+＃Testment
+　管理者側のログインはメールアドレスを「admin@gmail.com」、パスワードを「testtest」で使用できます。
+　顧客側は新規登録で利用可能です。
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+＃Version
+　ruby-3.1.2
+　rails ~> 6.1.7, >= 6.1.7.3
+　
+＃Install
+  $ git
+  $ cd nagano_cake
+　$ rails db:migrate
+　$ rails db:seed
+　$ bundle install
+　
+#Author
+　村田悠輔
